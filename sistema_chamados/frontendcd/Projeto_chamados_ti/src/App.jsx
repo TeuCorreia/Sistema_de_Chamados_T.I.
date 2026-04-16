@@ -9,7 +9,7 @@ function App() {
     return <Login onLogin={setUsuario} />
   }
 
-  return <Dashboard usuario={usuario} />
+  return <Dashboard usuario={usuario} onLogout={() => setUsuario(null)} />
 }
 
 export default App
