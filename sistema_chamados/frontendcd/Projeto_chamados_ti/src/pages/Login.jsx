@@ -1,5 +1,5 @@
 import { useState } from "react"
-import axios from "axios"
+import api from "../services/api"
 import revimagem from "../assets/logomarca_rev002.png"
 
 function Login({ onLogin }) {
@@ -12,7 +12,7 @@ function Login({ onLogin }) {
 
   async function handleLogin() {
     try {
-      const response = await axios.post("http://127.0.0.1:8000/login", {
+      const response = await api.post("/login", {
         login,
         senha
       })
@@ -25,7 +25,7 @@ function Login({ onLogin }) {
 
   async function handleRegister() {
     try {
-      const response = await axios.post("http://127.0.0.1:8000/register", {
+      const response = await api.post("/register", {
         nome,
         email: login,
         senha

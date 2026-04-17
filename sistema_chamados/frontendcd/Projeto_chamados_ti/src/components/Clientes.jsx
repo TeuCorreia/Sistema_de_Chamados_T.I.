@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import axios from "axios"
+import api from "../services/api"
 
 function Clientes() {
   const [clientes, setClientes] = useState([])
@@ -7,13 +7,13 @@ function Clientes() {
   const [setor, setSetor] = useState("")
 
   async function listar() {
-    const res = await axios.get("http://127.0.0.1:8000/clientes")
+    const res = await api.get("/clientes")
     setClientes(res.data)
   }
 
   async function cadastrar() {
     if (!nome) return
-    await axios.post("http://127.0.0.1:8000/clientes", { nome, setor })
+    await api.post("/clientes", { nome, setor })
     setNome("")
     setSetor("")
     listar()

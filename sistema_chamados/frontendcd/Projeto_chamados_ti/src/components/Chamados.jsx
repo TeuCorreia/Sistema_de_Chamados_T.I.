@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import axios from "axios"
+import api from "../services/api"
 
 function Chamados() {
   const [chamados, setChamados] = useState([])
@@ -8,19 +8,19 @@ function Chamados() {
   const [descricao, setDescricao] = useState("")
 
   async function listar() {
-    const res = await axios.get("http://127.0.0.1:8000/chamados")
+    const res = await api.get("/chamados")
     setChamados(res.data)
   }
 
   async function listarClientes() {
-    const res = await axios.get("http://127.0.0.1:8000/clientes")
+    const res = await api.get("/clientes")
     setClientes(res.data)
     if (res.data.length > 0) setClienteId(res.data[0].id)
   }
 
   async function abrir() {
     if (!descricao || !clienteId) return
-    await axios.post("http://127.0.0.1:8000/chamados", {
+    await api.post("/chamados", {
       descricao,
       cliente_id: parseInt(clienteId)
     })
@@ -29,12 +29,12 @@ function Chamados() {
   }
 
   async function fechar(id) {
-    await axios.put(`http://127.0.0.1:8000/chamados/${id}/fechar`)
+    await api.put(`/chamados/${id}/fechar`)
     listar()
   }
 
   async function deletar(id) {
-    await axios.delete(`http://127.0.0.1:8000/chamados/${id}`)
+    await api.delete(`/chamados/${id}`)
     listar()
   }
 
