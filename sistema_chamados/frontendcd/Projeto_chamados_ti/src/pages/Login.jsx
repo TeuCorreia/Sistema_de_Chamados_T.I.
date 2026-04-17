@@ -1,5 +1,6 @@
 import { useState } from "react"
 import axios from "axios"
+import revimagem from "../assets/logomarca_rev002.png"
 
 function Login({ onLogin }) {
   const [modoCadastro, setModoCadastro] = useState(false)
@@ -44,7 +45,7 @@ function Login({ onLogin }) {
       <div className="relative z-10 w-full max-w-md">
         <div className="bg-slate-950/90 border border-slate-800/80 shadow-2xl shadow-cyan-500/10 rounded-[28px] px-8 py-10 backdrop-blur-xl">
           <div className="mx-auto mb-8 flex h-16 w-16 items-center justify-center rounded-3xl bg-cyan-500/10 text-cyan-300 text-2xl">
-            🖥️
+            <img src={revimagem} alt="Logo" className="h-full w-full object-contain" />
           </div>
 
           <h1 className="text-3xl font-semibold text-white text-center">{modoCadastro ? "Cadastrar" : "Chamados T.I."}</h1>

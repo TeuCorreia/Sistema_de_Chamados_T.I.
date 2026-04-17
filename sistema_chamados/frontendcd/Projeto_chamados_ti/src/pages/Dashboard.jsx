@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
+import revimagem from "../assets/logomarca_rev002.png"
 
 function Dashboard({ usuario, onLogout }) {
   const [chamados, setChamados] = useState([])
@@ -124,7 +125,7 @@ function Dashboard({ usuario, onLogout }) {
             <div className="mb-8 px-3">
               <div className="mb-6 flex items-center justify-between gap-3 rounded-3xl bg-slate-900 px-4 py-5 shadow-sm shadow-black/20">
                 <div className="flex items-center gap-3">
-                  <div className="h-12 w-12 rounded-3xl bg-teal-500 flex items-center justify-center text-xl font-bold text-slate-950">R</div>
+                  <img src={revimagem} alt="Logo" className="h-10 w-10 object-contain" />
                   <div>
                     <p className="text-sm text-slate-400">Bem-vindo,</p>
                     <p className="font-semibold">{usuario?.nome}</p>
@@ -380,13 +381,13 @@ function Dashboard({ usuario, onLogout }) {
 
             <div className="mt-6 space-y-5">
               <div>
-                <label className="block text-sm font-medium text-slate-300">Cliente</label>
+                <label className="block text-sm font-medium text-slate-300">Solicitante</label>
                 <select
                   value={clienteId}
                   onChange={e => setClienteId(e.target.value)}
                   className="mt-2 w-full rounded-3xl border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-500/30"
                 >
-                  <option value="" disabled>Selecione um cliente</option>
+                  <option value="" disabled>Selecione o solicitante do chamado</option>
                   {clientes.map(c => (
                     <option key={c.id} value={c.id}>{c.nome}</option>
                   ))}
